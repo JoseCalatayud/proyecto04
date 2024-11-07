@@ -25,9 +25,9 @@ public class GeneradorArrayTest {
     }
     @Test
     public void invertirArreglo(){
-        int [] arrayMuestra = {34,56,76,77,88,99,101};
+        int [] arrayMuestra = {34,56,76,77,66,88,99,101};
         ga.invertirArreglo(arrayMuestra);
-        int [] arrayFinal = {101,99,88,77,76,56,34};
+        int [] arrayFinal = {101,99,88,66,77,76,56,34};
         assertArrayEquals(arrayFinal, arrayMuestra);
     }
 

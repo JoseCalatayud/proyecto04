@@ -24,12 +24,12 @@ public class GeneradorArray {
     }
     public int [] invertirArreglo (int [] arreglo){
         int temp1 = 0;
-        int temp2 = 0;
+        
         for (int i = 0; i<arreglo.length/2; i++) {
             temp1=arreglo[i];
-            temp2=arreglo[arreglo.length-1-i];
+            arreglo[i]=arreglo[arreglo.length-1-i];
             arreglo[arreglo.length-1-i]=temp1;
-            arreglo[i]=temp2;
+            
         }
         return arreglo;
 
