@@ -22,7 +22,7 @@ public class GeneradorArray {
         }
         return arreglo;
     }
-    public int [] invertirArreglo (int [] arreglo){
+    public void invertirArreglo (int [] arreglo){
         int temp1 = 0;
         
         for (int i = 0; i<arreglo.length/2; i++) {
@@ -31,7 +31,7 @@ public class GeneradorArray {
             arreglo[arreglo.length-1-i]=temp1;
             
         }
-        return arreglo;
+        
 
     }
 
