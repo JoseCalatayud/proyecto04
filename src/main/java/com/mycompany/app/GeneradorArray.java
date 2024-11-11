@@ -35,7 +35,7 @@ public class GeneradorArray {
 
     public int[] crearArrayInversoAlternativo(int[] array) {
         int[] arreglo = new int[array.length];
-        for (int i = 0 ; i <= array.length - 1; i++) {
+        for (int i = 0; i <= array.length - 1; i++) {
             arreglo[arreglo.length - 1 - i] = array[i];
         }
         return arreglo;
@@ -60,23 +60,51 @@ public class GeneradorArray {
         }
         return total;
     }
+    public double mediaArreglo (double [] arreglo) {
+        double total = 0;
+        for (double i : arreglo) {
+            total += i;
+        }
+        return total/arreglo.length;
+    }
 
-    public int [] ordenarArreglo (int [] arreglo){
+    public int[] ordenarArreglo(int[] arreglo) {
         Arrays.sort(arreglo);
         return arreglo;
     }
 
-    public float devolverValorEnIndice (float[] lista, int indiceABuscar) throws Exception { //lanzo una excepcion
+    public float devolverValorEnIndice(float[] lista, int indiceABuscar) throws Exception { // lanzo una excepcion
         if (indiceABuscar < 0) {
-            //lanzo la excepcion y para que no explote el programa. Seria un try catch si en este punto puedo y quiero solucionarlo.
-            throw new Exception("Me has pasado un indice negativo: "+indiceABuscar);
-            //String.format Revisar en java.lang.String
-        }else {
-            if (indiceABuscar>=lista.length) {
-                throw new Exception("Me has pasado un indice mayor de lo permitido: "+ indiceABuscar);
+            // lanzo la excepcion y para que no explote el programa. Seria un try catch si
+            // en este punto puedo y quiero solucionarlo.
+            throw new Exception("Me has pasado un indice negativo: " + indiceABuscar);
+            // String.format Revisar en java.lang.String
+        } else {
+            if (indiceABuscar >= lista.length) {
+                // throw new Exception("Me has pasado un indice mayor de lo permitido: "+
+                // indiceABuscar);
+                throw new Exception(String.format("Me has pasado un indice mayor de lo permitido: %d", indiceABuscar));
             }
         }
         return lista[indiceABuscar];
     }
+
+    public float devolverValorEnIndice_Mejorado(float[] lista, int indiceABuscar) throws Exception { // lanzo una
+                                                                                                     // excepcion
+        if (indiceABuscar < 0) {
+            // lanzo la excepcion y para que no explote el programa. Seria un try catch si
+            // en este punto puedo y quiero solucionarlo.
+            throw new Exception("Me has pasado un indice negativo: " + indiceABuscar);
+            // String.format Revisar en java.lang.String
+        }
+        if (indiceABuscar >= lista.length) {
+            // throw new Exception("Me has pasado un indice mayor de lo permitido: "+
+            // indiceABuscar);
+            throw new Exception(String.format("Me has pasado un indice mayor de lo permitido: %d", indiceABuscar));
+        }
+
+        return lista[indiceABuscar];
+    }
+    
 
 }

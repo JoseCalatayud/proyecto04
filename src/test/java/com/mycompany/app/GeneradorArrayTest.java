@@ -2,12 +2,14 @@ package com.mycompany.app;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 public class GeneradorArrayTest {
 
+private static final double DELTA = 0.0000001;
     GeneradorArray cut = new GeneradorArray();
 
     @Test
@@ -58,6 +60,13 @@ public class GeneradorArrayTest {
         assertEquals(resultadoEsperado, resultado);
 
     }
+    @Test
+    public void sumarNumerosArregloCorrecto(){
+        double [] arreglo = {3.4, 5.6, 7.3, 2.7, 0.3};
+        double resultadoEsperado = 3.86;
+        assertEquals(resultadoEsperado, cut.mediaArreglo(arreglo), DELTA);
+
+    }
 
     @Test
     public void ordenarTest() {
@@ -72,16 +81,16 @@ public class GeneradorArrayTest {
     public void devolverValorEnIndiceTest() throws Exception {
         float[] muestra = { 4.7f, 5.9f, 2.9f, 8.2f, 3.8f };
         float valorEsperada = 5.9f;
-        float valorResuelta = cut.devolverValorEnIndice(muestra, 1);
+        float valorResuelta = cut.devolverValorEnIndice_Mejorado(muestra, 1);
         assertEquals(valorEsperada, valorResuelta);
     }
-
+    //Los test no llevan try catch
     @Test
     public void devolverValorEnIndiceNegativoTest() throws Exception {
         String mensajeError = "";
         float[] muestra = { 4.7f, 5.9f, 2.9f, 8.2f, 3.8f };
         try {
-            cut.devolverValorEnIndice(muestra, -1);
+            cut.devolverValorEnIndice_Mejorado(muestra, -1);
         } catch (Exception e) {
             mensajeError = e.getMessage();
         }
@@ -89,15 +98,28 @@ public class GeneradorArrayTest {
     }
 
     @Test
-    public void devolverValorEnIndicePorArribaTest() throws Exception {
+    public void devolverValorEnIndicePorArribaTest() {
         String mensajeError = "";
         float[] muestra = { 4.7f, 5.9f, 2.9f, 8.2f, 3.8f };
         try {
-            cut.devolverValorEnIndice(muestra, muestra.length);
+            cut.devolverValorEnIndice_Mejorado(muestra, muestra.length);
         } catch (Exception e) {
             mensajeError = e.getMessage();
         }
         assertEquals("Me has pasado un indice mayor de lo permitido: " + muestra.length, mensajeError);
     }
+    @Test
+    public void devolverValorEnIndiceNegativoCorrectoTestC() throws Exception {
+        int indiceNegativo= -1;
+        float[] muestra = { 4.7f, 5.9f, 2.9f, 8.2f, 3.8f };
+        assertThrows(Exception.class, ()->cut.devolverValorEnIndice_Mejorado(muestra, indiceNegativo));
+    }
 
+    @Test
+    public void devolverValorEnIndicePorArribaCorrectoTest() throws Exception{
+        
+        float[] muestra = { 4.7f, 5.9f, 2.9f, 8.2f, 3.8f };
+        int indiceMayor = muestra.length + 1;
+        assertThrows(Exception.class, ()->cut.devolverValorEnIndice(muestra, indiceMayor));
+    }
 }
